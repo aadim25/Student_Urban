@@ -65,7 +65,7 @@ class Game (arcade.Window):
 
     def on_key_release(self, key: int, modifiers: int):
         if key == arcade.key.RIGHT or key == arcade.key.LEFT:
-            self.bar.change_x = 0
+            self.bar.change_x = 2
 
 if __name__=='__main__':
     windows = Game(SCREEN_WIDTH, SCREEN_HEIGTH, SCREEN_TITLE)
