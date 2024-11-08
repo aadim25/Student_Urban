@@ -51,21 +51,21 @@ class Game (arcade.Window):
     def update(self,delta):
         if arcade.check_for_collision(self.bar, self.ball):
             self.ball.change_y = -self.ball.change_y
-            self.ball.change_x = -self.ball.change_x
-        if self.ball.bottom<=ZERO_BAR_y:
+            # self.ball.change_x = -self.ball.change_x
+        if self.ball.bottom<=0:
             self.ball.change_y = -self.ball.change_y
         self.ball.update()
         self.bar.update()
 
     def on_key_press(self, key: int, modifiers: int):
         if key == arcade.key.RIGHT:
-            self.bar.change_x =5
+            self.bar.change_x =2
         if key == arcade.key.LEFT:
-            self.bar.change_x =-5
+            self.bar.change_x =-2
 
     def on_key_release(self, key: int, modifiers: int):
         if key == arcade.key.RIGHT or key == arcade.key.LEFT:
-            self.bar.change_x = 2
+            self.bar.change_x = 0
 
 if __name__=='__main__':
     windows = Game(SCREEN_WIDTH, SCREEN_HEIGTH, SCREEN_TITLE)
