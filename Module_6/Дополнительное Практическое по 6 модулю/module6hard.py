@@ -89,22 +89,34 @@ print(cube1.get_volume())
 
 class Figure():
 
-    sides_count = 0
     def __init__(self, sides, R, G, B, my_bool):
-        self.__sides = sides
+        self.sides_count = sides
         self.filled = my_bool
+        self.__color=[R,G,B]
+        self.__sides=[]
+        self.current_sides = 0
 
-    def __is_valid_color(self, R,G,B):
-        if 0<=R<=255 and 0<=G<=255 and 0<=B<=255:
-            return True
-        return False
+    def set_sides(self, sides_count):
+        for i in range(self.sides_count):
+            if __is_valid_sides(i):
+                self.current_sides+=1
+                self.__sides.append(int(input(f'Введите длину стороны №{i+1}: ')))
 
-    def get_color(self,R,G,B):
-        if __is_valid_color(self,R,G,B):
-            return True
+    def get_sides(self):
+        return (self.sides_count)
+    def get_color(self):
+        return self.__color
 
     def set_color(self,R,G,B):
-        self.__color = [R, G, B]
+        if __is_valid_color([R,G,B]):
+            self.__color = [R, G, B]
+
+    def __len__(self):
+        sum_sides = 0
+        for i in range(self.sides_count):
+            sum_sides +=i
+        return
+
 class Circle():
     pass
 
@@ -115,3 +127,6 @@ class Cube():
     pass
 
 figure = Figure(3,255,255,0, 1)
+print (figure.get_color())
+print (figure.get_sides())
+print (figure.__len__())
