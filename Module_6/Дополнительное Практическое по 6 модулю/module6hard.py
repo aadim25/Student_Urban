@@ -14,8 +14,7 @@
 Давайте попробуем реализовать простейшие классы для некоторых таких фигур и при этом применить наследование (в будущем, изучая сторонние библиотеки, вы будете замечать схожие классы, уже написанные кем-то ранее):
 
 Общее ТЗ:
-Реализовать классы Figure(родительский), Circle, Triangle и Cube, объекты которых будут обладать методами изменения размеров, цвета и т.д.
-Многие атрибуты и методы должны быть инкапсулированны и для них должны быть написаны интерфейсы взаимодействия (методы) - геттеры и сеттеры.
+Реализовать классы Figure(родительский), Circle, Triangle и Cube, объекты которых будут обладать методами изменения размеров, цвета и т.д. Многие атрибуты и методы должны быть инкапсулированны и для них должны быть написаны интерфейсы взаимодействия (методы) - геттеры и сеттеры.
 
 Подробное ТЗ:
 
@@ -96,11 +95,12 @@ class Figure():
         self.__sides=[]
         self.current_sides = 0
 
-    def set_sides(self, sides_count):
+    def set_sides(self):
         for i in range(self.sides_count):
             if __is_valid_sides(i):
                 self.current_sides+=1
                 self.__sides.append(int(input(f'Введите длину стороны №{i+1}: ')))
+        return self.__sides
 
     def get_sides(self):
         return (self.sides_count)
@@ -113,13 +113,17 @@ class Figure():
 
     def __len__(self):
         sum_sides = 0
+        self.set_sides(self)
         for i in range(self.sides_count):
-            sum_sides +=i
-        return
+            sum_sides +=self.__sides[i]
+        return sum_sides
 
-class Circle():
-    pass
+class Circle(Figure):
+    def __init__(self, cir):
+        self.__radius = cir/(2*pi)
 
+    def get_square(self):
+        return pi*self.__radius**2
 class Triangle():
     pass
 
