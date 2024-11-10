@@ -87,7 +87,7 @@ print(cube1.get_volume())
 '''
 
 class Figure():
-    sides_count = 1
+    sides_count = 0
 
     def __init__(self, sides, color, my_bool):
         self.__sides=sides
@@ -108,8 +108,8 @@ class Figure():
         return self.__color
 
     def set_color(self,R,G,B):
-        if __is_valid_color([R,G,B]):
-            self.__color = [R, G, B]
+        if __is_valid_color(R,G,B):
+            self.__color = (R, G, B)
 
     def __len__(self):
         sum_sides = 0
@@ -127,11 +127,12 @@ class Circle(Figure):
         return pi*self.__radius**2
 class Triangle(Figure):
     sides_count = 3
-
+    def Striangl(self):
+        return self.__
 class Cube(Figure):
     sides_count = 12
 
-figure = Figure(3,(255,255,0), 1)
+figure = Figure(3,(255,255,0), 0)
 print (figure.get_color())
 print (figure.get_sides())
 print (figure.__len__())
