@@ -87,23 +87,23 @@ print(cube1.get_volume())
 '''
 
 class Figure():
+    sides_count = 1
 
-    def __init__(self, sides, R, G, B, my_bool):
-        self.sides_count = sides
+    def __init__(self, sides, color, my_bool):
+        self.__sides=sides
+        self.__color = color
         self.filled = my_bool
-        self.__color=[R,G,B]
-        self.__sides=[]
-        self.current_sides = 0
 
-    def set_sides(self):
-        for i in range(self.sides_count):
-            if __is_valid_sides(i):
-                self.current_sides+=1
-                self.__sides.append(int(input(f'Введите длину стороны №{i+1}: ')))
-        return self.__sides
+    def set_sides(self, *sides):
+        if len(sides) == len(self.__sides):
+            valid_sides =[]
+            for side in sides:
+                if self.__is_valid_sides(side):
+                    self.valid_sides.append(side)
+            self.__sides = valid_sides
 
     def get_sides(self):
-        return (self.sides_count)
+        return (self.__sides)
     def get_color(self):
         return self.__color
 
@@ -113,24 +113,25 @@ class Figure():
 
     def __len__(self):
         sum_sides = 0
-        self.set_sides(self)
-        for i in range(self.sides_count):
-            sum_sides +=self.__sides[i]
+        for i in (self.__sides):
+            sum_sides +=i
         return sum_sides
 
 class Circle(Figure):
+    sides_count = 1
+
     def __init__(self, cir):
         self.__radius = cir/(2*pi)
 
     def get_square(self):
         return pi*self.__radius**2
-class Triangle():
-    pass
+class Triangle(Figure):
+    sides_count = 3
 
-class Cube():
-    pass
+class Cube(Figure):
+    sides_count = 12
 
-figure = Figure(3,255,255,0, 1)
+figure = Figure(3,(255,255,0), 1)
 print (figure.get_color())
 print (figure.get_sides())
 print (figure.__len__())
