@@ -135,4 +135,5 @@ class Cube(Figure):
 figure = Figure(3,(255,255,0), 0)
 print (figure.get_color())
 print (figure.get_sides())
-print (figure.__len__())
+figure.set_sides(3,4,5)
+# print (figure.__len__())
