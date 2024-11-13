@@ -1,8 +1,8 @@
 from math import pi
 class Figure:
     sides_count = 0
-    def __init__(self, *sides, color, my_bool=False):
-        self.__sides = sides if len(sides)==self.sides_count else [1]*self.sides_count
+    def __init__(self, *sides, *color, my_bool=False):
+        self.__sides = sides if len(sides)==sides_count else [1]*self.sides_count
         self.__color = color
         self.filled = my_bool
 
