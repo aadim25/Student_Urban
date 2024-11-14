@@ -3,11 +3,12 @@ class Figure:
     sides_count = 0
     def __init__(self, color, *sides):
         # print ('Новая фигура', color, sides)
-        # print ('Длина color', len(color))
-        print ('Длина sides', len(sides))
+        print ('Значение color', (color))
+        print('sides перед self', sides)
+        print ('Длина sides', len(list(sides)))
         self.filled = False
         self.__color = color
-        self.__sides = sides if len(sides) == self.sides_count else [1]*self.sides_count
+        self.__sides = list(sides) if len(sides) == self.sides_count else [1]*self.sides_count
         print('self.__sides', self.__sides)
     def set_sides(self, *new_sides):
         # print('Установка стороны', sides)
@@ -92,7 +93,7 @@ class Cube(Figure):
     def __init__(self, color, side):
         print('Новый куб, сторона', side)
         sides = [side] * 12
-        super().__init__(color, sides)
+        super().__init__(color, list(sides))
 
     def get_volume(self):
         # print('Вычисление объема куба')
