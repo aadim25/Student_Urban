@@ -69,6 +69,7 @@ class Circle(Figure):
     # def __len__(self, sides):
     #     return (sides)
 
+
     def get_square(self):
         print('Вычисление площади окружности')
         return math.pi * self.__radius ** 2
