@@ -3,13 +3,15 @@ class Figure:
     sides_count = 0
     def __init__(self, color, *sides):
         # print ('Новая фигура', color, sides)
-        print ('Значение color', (color))
-        print('sides перед self', sides)
-        print ('Длина sides', len(list(sides)))
+        # sides = [6,6,6,6,6,6,6,6,6,6,6,6]
+        # print ('Значение color', (color))
+        # print('sides перед self', sides, type(sides))
+        # print ('Длина sides', len(sides))
         self.filled = False
         self.__color = color
-        self.__sides = list(sides) if len(sides) == self.sides_count else [1]*self.sides_count
-        print('self.__sides', self.__sides)
+        # self.__sides = sides if len(sides)==self.sides_count else [1]*self.sides_count
+        self.__sides = sides if len(sides) == self.sides_count else [1]*self.sides_count
+        # print('Проверка на кортеж self.__sides', self.__sides, type(self.__sides))
     def set_sides(self, *new_sides):
         # print('Установка стороны', sides)
         # if len(new_sides) == self.sides_count:
@@ -21,8 +23,8 @@ class Figure:
         #             print(valid_sides)
         #     self.__sides = valid_sides
         if len(new_sides) == self.sides_count:
-            self.__sides = new_sides
-            print('new_sides', new_sides)
+            self.__sides = list(new_sides)
+            # print('new_sides', new_sides)
 
     def __is_valid_color(self,R,G,B):
         check_color = []
@@ -91,9 +93,10 @@ class Triangle(Figure):
 class Cube(Figure):
     sides_count = 12
     def __init__(self, color, side):
-        print('Новый куб, сторона', side)
+        # print('Новый куб, сторона', side)
         sides = [side] * 12
-        super().__init__(color, list(sides))
+        # print('Куб sides', type(sides))
+        super().__init__(color, sides)
 
     def get_volume(self):
         # print('Вычисление объема куба')
@@ -111,7 +114,7 @@ print(cube1.get_color()) #'Куб, get_color',
 
 # Проверка на изменение сторон:
 cube1.set_sides(5, 3, 12, 4, 5) # Не изменится
-print('get_sides_cube', cube1.get_sides())
+print(cube1.get_sides()) # 'get_sides_cube',
 circle1.set_sides(15) # Изменится
 print(circle1.get_sides())
 
