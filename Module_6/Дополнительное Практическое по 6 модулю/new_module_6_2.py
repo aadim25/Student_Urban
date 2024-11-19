@@ -82,7 +82,7 @@ class Cube(Figure):
 
     def get_volume(self):
         print('Вычисление объема куба')
-        return self._Figure__sides[0] ** 3
+        return self.get_sides()[0] ** 3
 
 
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)

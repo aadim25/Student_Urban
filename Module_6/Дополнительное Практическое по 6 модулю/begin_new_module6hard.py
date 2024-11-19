@@ -12,18 +12,26 @@ class Figure:
         # self.__sides = sides if len(sides)==self.sides_count else [1]*self.sides_count
         self.__sides = sides if len(sides) == self.sides_count else [1]*self.sides_count
         # print('Проверка на кортеж self.__sides', self.__sides, type(self.__sides))
+    # def set_sides(self, *new_sides):
     def set_sides(self, *new_sides):
+        if len(new_sides) == len(self.__sides):
+            valid_sides = []
+            for side in new_sides:
+                if self.__is_valid_sides(side):
+                    valid_sides.append(side)
+            self.__sides = valid_sides
         # print('Установка стороны', sides)
-        # if len(new_sides) == self.sides_count:
+        # if len(new_sides) == len(self.__sides):
         #     valid_sides = []
         #     for side in new_sides:
         #         if self.__is_valid_sides(side):
-        #             print('side', side)
+        #             # print('side', side)
         #             valid_sides.append(side)
-        #             print(valid_sides)
+        # #             print(valid_sides)
         #     self.__sides = valid_sides
-        if len(new_sides) == self.sides_count:
-            self.__sides = list(new_sides)
+
+        # if len(new_sides) == self.sides_count:
+        #     self.__sides = list(new_sides)
             # print('new_sides', new_sides)
 
     def __is_valid_color(self,R,G,B):

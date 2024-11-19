@@ -5,7 +5,7 @@ class Figure:
         # print ('Новая фигура', color, sides)
         # sides = [6,6,6,6,6,6,6,6,6,6,6,6]
         # print ('Значение color', (color))
-        # print ('sides перед self', sides, type(sides))
+        print ('sides перед self', sides, type(sides))
         # print ('Длина sides', len(sides))
         self.filled = False
         self.__color = color
