@@ -42,8 +42,6 @@ Potato, 5.5, Vegetables
 
 '''
 
-from pprint import pprint
-
 
 class Product:
     def __init__(self, name: str, weigth: float, category: str):
@@ -59,27 +57,25 @@ class Shop:
     def __init__(self):
         self.__file_name = 'products.txt'
 
-    def get_products(self, words):
+    def get_products(self):
         file = open(self.__file_name)
-        pprint(file.read())
+        words = file.read()
         file.close()
-        # return words
+        return words
 
 
     def add(self, *products):
-        file = open(self.__file_name, 'r')
-        words = file.read()
-        file.close()
+        my_str = self.get_products()
+        # print (my_str)
         for i in products:
-            if i in words:
-                print(f'Продукт {Product.name} уже есть в магазине')
+            if i.name in my_str:
+                print(f'Продукт {i} уже есть в магазине')
             else:
-                file=open(self.__file_name,'w')
-                file.write(f'{self.name}, {self.weigth}, {self.category}')
+                file=open(self.__file_name,'a')
+                file_str = f'{i.name}, {str(i.weigth)}, {i.category} \n'
+                file.write (file_str)
                 file.close()
 
-# my_product = Product('Гречка','800 грамм','Крупа')
-# print(my_product.__str__())
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
