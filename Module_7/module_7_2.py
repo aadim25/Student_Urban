@@ -13,7 +13,7 @@ def custom_write(file_name, strings:list, file_seek:list):
         file_seek.append(file.tell())
         file.writelines(f'{i}\n')
     file.close()
-    print (file_seek)
+
 
 def my_dict(file_name:str, file_seek:list):
     file = open(file_name, 'r', encoding='utf-8')
