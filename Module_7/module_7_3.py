@@ -24,26 +24,41 @@ count(self, word) - метод, где word - искомое слово. Воз�
 
 for name, words in get_all_words().items():
   # Логика методов find или count'''
+import os
 class WordsFinder:
-    def __init__(self, *file_name:list, my_str=""):
+    def __init__(self, *file_name:list[str], my_str=""):
         self.file_name = file_name
-        self.my_str=my_str
+        self.my_str = my_str
 
 
     # def add_file_name(self, *file_name):
     #     self.file_name
-    def get_all_words(self, *file_name,self.my_str:str):
-        all_words ={}
+    def get_all_words(self, *file_name:str, my_str:str=''):
+        all_words ={str:tuple}
+        # print(os.path.dirname(os.path.abspath(__file__)))
         for name in file_name:
-            with open (name, 'r') as f:
-                for i in range(1):
-                    my_str = f.readline().lower()
-                    print (my_str)
-                for i in f.read():
-
+            with open (name, 'r',encoding='utf-8') as f:
+                my_str.split(f.readline())
+                all_words.append(f.name:(my_str[0],my_str[1]))
+                print (my_str)
+                # all_words.append({f.name:my_str})
+            print (all_words)
+            f.close()
 
 
     def find(self,word):
         pass
-        # my_str=
-        # if word.lower() in
+        # for name in file_name:
+
+
+
+    def count(self,word):
+        pass
+
+print (os.getcwd())
+os.chdir('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3')
+first=WordsFinder(os.getcwd() + '\\test_file.txt')
+# H:\Users\aadim\New_Project\StudentProject\Module_7\Материал для 7_3
+# first.get_all_words('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3\\test_file.txt')
+
+first.get_all_words(os.getcwd() + '\\test_file.txt')
