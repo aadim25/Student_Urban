@@ -38,12 +38,10 @@ class WordsFinder:
         # print(os.path.dirname(os.path.abspath(__file__)))
         for name in file_name:
             with open (name, 'r',encoding='utf-8') as f:
-                my_str.split(f.readline())
-                all_words.append(f.name:(my_str[0],my_str[1]))
-                print (my_str)
-                # all_words.append({f.name:my_str})
-            print (all_words)
+                my_str=f.readline().split(maxsplit=2)
+                all_words={os.path.basename(name):(my_str[0],my_str[1])}
             f.close()
+            print(all_words)
 
 
     def find(self,word):
