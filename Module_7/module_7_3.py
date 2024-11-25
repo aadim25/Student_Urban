@@ -65,7 +65,7 @@ class WordsFinder:
                 # print (i.count(self.all_words(self.file_name)))
 
     def count(self,word):
-        pass
+
 
 print (os.getcwd())
 os.chdir('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3')
