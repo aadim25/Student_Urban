@@ -42,18 +42,18 @@ class WordsFinder:
                 my_str = f.readline().lower()
                 # my_str.translate((',.=!?;:'))
                 my_str = my_str.split()
-                all_words.update({os.path.basename(f.name):(my_str)})
+                all_words.update(os.path.basename(f.name):(my_str))
             f.close()
             self.all_words = all_words
             return (all_words)
 
 
     def find(self,word):
-        print (type(self.all_words))
+        # print (type(self.all_words))
         for key, value in self.all_words.items():
             print('kv',key,value)
             if word in value:
-                print (key)
+                return {key,item()}
 
 
             # for j in self.file_name:
