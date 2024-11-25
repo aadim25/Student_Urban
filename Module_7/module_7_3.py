@@ -24,31 +24,45 @@ count(self, word) - метод, где word - искомое слово. Воз�
 
 for name, words in get_all_words().items():
   # Логика методов find или count'''
-import os
+import os, string
 class WordsFinder:
-    def __init__(self, *file_name:list[str], my_str=""):
+    def __init__(self, *file_name:list[str], my_str=''):
         self.file_name = file_name
         self.my_str = my_str
+        self.all_words={}
 
 
     # def add_file_name(self, *file_name):
     #     self.file_name
-    def get_all_words(self, *file_name:str, my_str:str=''):
-        all_words ={str:tuple}
+    def get_all_words(self):
+        all_words = {}
         # print(os.path.dirname(os.path.abspath(__file__)))
-        for name in file_name:
+        for name in self.file_name:
             with open (name, 'r',encoding='utf-8') as f:
-                my_str=f.readline().split(maxsplit=2)
-                all_words={os.path.basename(name):(my_str[0],my_str[1])}
+                my_str = f.readline().lower()
+                # my_str.translate((',.=!?;:'))
+                my_str = my_str.split()
+                all_words.update({os.path.basename(f.name):(my_str)})
             f.close()
-            print(all_words)
+            self.all_words = all_words
+            return (all_words)
 
 
     def find(self,word):
-        pass
-        # for name in file_name:
+        print (type(self.all_words))
+        for key, value in self.all_words.items():
+            print('kv',key,value)
+            if word in value:
+                print (key)
 
 
+            # for j in self.file_name:
+            #     print (j)
+                # print (os.path.basename(self.file_name))
+                # print (os.path.basename(j))
+                # print (self.all_words.get(os.path.basename(j)))
+                # print(self.all_words)
+                # print (i.count(self.all_words(self.file_name)))
 
     def count(self,word):
         pass
@@ -59,4 +73,5 @@ first=WordsFinder(os.getcwd() + '\\test_file.txt')
 # H:\Users\aadim\New_Project\StudentProject\Module_7\Материал для 7_3
 # first.get_all_words('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3\\test_file.txt')
 
-first.get_all_words(os.getcwd() + '\\test_file.txt')
+print(first.get_all_words())
+first.find('a')
