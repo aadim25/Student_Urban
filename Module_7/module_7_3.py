@@ -26,47 +26,45 @@ for name, words in get_all_words().items():
   # Логика методов find или count'''
 import os, string
 class WordsFinder:
+    # Инициализация
     def __init__(self, *file_name:list[str], my_str=''):
         self.file_name = file_name
         self.my_str = my_str
         self.all_words={}
 
-
-    # def add_file_name(self, *file_name):
-    #     self.file_name
+    # получение данных из файла
     def get_all_words(self):
-        all_words = {}
-        # print(os.path.dirname(os.path.abspath(__file__)))
+        all_words = {} # результирующий словарь
         for name in self.file_name:
             with open (name, 'r', encoding='utf-8') as f:
                 my_str = f.read().lower()
                 for my_punct in [',', '.', '=', '!', '?', ';', ':', ' - ']:
                     my_str = my_str.replace(my_punct,"")
-                all_words[os.path.basename(f.name)] = my_str
+                all_words[os.path.basename(f.name)] = my_str.split()
             f.close()
             self.all_words = all_words
             return (all_words)
 
 
     def find(self, word):
-        for (key, value) in (self.all_words.items()):
+        for key, value in self.all_words.items():
             if word.lower() in value:
-                return {key,value.index(word.lower())}
+                return {key, value.index(word.lower())+1}
 
 
     def count(self,word):
         places ={}
         t = 0
         for key, value in self.get_all_words().items():
-            if word.lower() in value:
-                t+=1
+            for i in range(len(value)):
+                if word.lower() in value[i]:
+                    t+=1
                 places[key] = t
         return places
 
 
-os.chdir('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3')
-first=WordsFinder(os.getcwd() + '\\test_file.txt')
-my_str = "a"
-print(first.get_all_words())
-print(first.find(my_str))
-print(first.count(my_str))
+os.chdir('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Материал для 7_3\\')
+finder2 = WordsFinder(os.getcwd()+'\\test_file.txt')
+print(finder2.get_all_words()) # Все слова
+print(finder2.find('TEXT')) # 3 слово по счёту
+print(finder2.count('teXT')) # 4 слова teXT в тексте всего
