@@ -68,5 +68,5 @@ os.chdir('H:\\Users\\aadim\\New_Project\\StudentProject\\Module_7\\Матери�
 first=WordsFinder(os.getcwd() + '\\test_file.txt')
 my_str = "a"
 print(first.get_all_words())
-print(first.find('text'))
-print(first.count('a'))
+print(first.find(my_str))
+print(first.count(my_str))
