@@ -9,5 +9,5 @@ print ((2*2+2) == (2*(2+2)))
 # 4nd program
 my_str = '123.456'
 my_str = float(my_str)
-my_str = int((my_str - int(my_str))*10//1)
+my_str = int((my_str%1)*10)
 print (my_str)
