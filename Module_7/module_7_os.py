@@ -33,5 +33,3 @@ for root, dirs,files in my_lst:
 
     for file in files:
         my_file.append(file)
-
-for print (my_file)
