@@ -37,7 +37,6 @@ for roots, dirs, files in os.walk('H:'):
     my_file.append(files)
 
 # filepath =
-
 # print (os.path.basename('.'))
 for i in my_root:
     print (os.path.split(i))
