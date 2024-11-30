@@ -38,7 +38,6 @@ for root, dirs,files in my_lst:
 for dir in my_dir:
     print (dir)
 # print (my_file)'''
-
 import os
 my_dir = []
 my_file = []
