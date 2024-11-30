@@ -45,6 +45,7 @@ my_file = []
 my_root = []
 print(os.getcwd())
 os.chdir('H:\Изображения')
+print('getcwd',os.getcwd())
 #print(os.getcwd())
 #my_lst = os.walk('.')
 #print(my_lst)
@@ -60,7 +61,13 @@ for roots, dirs, files in os.walk('.'):
         #print(file)
         my_file.append(file)
 
-# print(os.listdir('.'))
+for root in my_root:
+    print(root)
+
+    print(os.listdir(os.chdir(root)))
+
+for root in my_root:
+    print (root)
 for dir in my_dir:
     print (dir)
     # my_str = 'H:\Изображения'
