@@ -25,7 +25,7 @@ import os
 my_dir = []
 my_file = []
 # my_dir = os.getcwd()
-my_lst = os.walk(r'H:\Изображения')
+my_lst = os.walk('.')
 for root, dirs,files in my_lst:
 
     for dir in dirs:
@@ -33,3 +33,8 @@ for root, dirs,files in my_lst:
 
     for file in files:
         my_file.append(file)
+
+# print(os.listdir('.'))
+for dir in my_dir:
+    print (dir)
+# print (my_file)
