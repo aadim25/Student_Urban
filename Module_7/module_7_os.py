@@ -21,7 +21,7 @@ for root, dirs, files in os.walk(directory):
     parent_dir = ?
     print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
 '''
-import os
+'''import os
 my_dir = []
 my_file = []
 # my_dir = os.getcwd()
@@ -37,4 +37,34 @@ for root, dirs,files in my_lst:
 # print(os.listdir('.'))
 for dir in my_dir:
     print (dir)
-# print (my_file)
+# print (my_file)'''
+
+import os
+my_dir = []
+my_file = []
+my_root = []
+print(os.getcwd())
+os.chdir('H:\Изображения')
+#print(os.getcwd())
+#my_lst = os.walk('.')
+#print(my_lst)
+for roots, dirs, files in os.walk('.'):
+    for root in roots:
+        my_root.append(root)
+
+    for dir in dirs:
+        my_dir.append(dir)
+        #print(dir)
+
+    for file in files:
+        #print(file)
+        my_file.append(file)
+
+# print(os.listdir('.'))
+for dir in my_dir:
+    print (dir)
+    # my_str = 'H:\Изображения'
+    # os.chdir(dir)
+    for my_path,sec_dir,sec_files in os.walk(dir):
+        for file in sec_files:
+            print (file)
