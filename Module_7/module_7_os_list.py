@@ -20,34 +20,45 @@ for root, dirs, files in os.walk(directory):
     filesize = ?
     parent_dir = ?
     print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
+
+Так как в разных операционных системах разная схема расположения папок, тестировать проще всего в папке проекта (directory = “.”)
+Пример возможного вывода:
+Обнаружен файл: main.py, Путь: ./main.py, Размер: 111 байт, Время изменения: 11.11.1111 11:11, Родительская директория.
 '''
-import os
+import os, datetime, time
 my_root = []
 my_dir = []
 my_file = []
+directory='.' # H:\Изображения
 print (os.getcwd())
-os.chdir('H:') # Изображения
+# os.chdir('H:') # Изображения
 # print (os.listdir('.'))
 # for i in os.listdir('.'):
 
-for roots, dirs, files in os.walk('H:'):
-    # print(dirs)
-    my_root.append(roots)
-    my_dir.append(dirs)
-    my_file.append(files)
+for roots, dirs, files in os.walk(directory):
+    filepath = roots
 
-# filepath =
-# print (os.path.basename('.'))
-for i in my_root:
-    print (os.path.split(i))
-    print ('Roots ',i)
-    for j in os.listdir(i):
-        # print (os.path.split(my_root))
-        print('Files ', (j))
+    print (filepath)
+    # print ('dirs',dirs)
+    for i in roots:
+        if for a,b,c in os.walk(i):
+        for j in files:
+            if i =='.':
+                my_str = str(j)
+            else:
+                my_str = str(i) + str(j)
+            print (my_str)
+            print (filepath)
+            filetime = os.path.getmtime(my_str)
+            print (filetime)
 
-# for j in my_dir:
-#     print (os.path.split(j))
-#     print ('Dirs ',j)
+# for roots, dirs, files in os.walk('H:'):
+#     # print(dirs)
+#     my_root.append(roots)
+#     my_dir.append(dirs)
+#     my_file.append(files)
+
+
 
 
 
