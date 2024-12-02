@@ -67,14 +67,14 @@ class Shop:
     def add(self, *products):
         my_str = self.get_products()
         # print (my_str)
+        file = open(self.__file_name, 'a')
         for i in products:
-            if i.name in my_str:
-                print(f'Продукт {i} уже есть в магазине')
+            if (i.name and i.weigth and i.category) in my_str: # .name изменено по указанию преподавателя
+                print(f'Продукт {i.name} уже есть в магазине')
             else:
-                file=open(self.__file_name,'a')
                 file_str = f'{i.name}, {str(i.weigth)}, {i.category} \n'
                 file.write (file_str)
-                file.close()
+        file.close()
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
