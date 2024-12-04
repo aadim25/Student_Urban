@@ -19,25 +19,25 @@ print(add_everything_up(123.456, 7))
 яблоко4215
 130.456
 '''
-
+import decimal
+# getcontext().prec = 6
 def add_everything_up(a,b):
 
     try:
         i = a + b
     except TypeError as exc:
-        print("Нельзя складывать пременные разных типов", exc)
-        if type(a)==str and type(b)!=str:
-            i = a+str(b)
-        elif type(b)==str and type(a)!=str:
-            i = b +str(a)
-        else:
-            i = b + a
-    else:
-        print("Сложение выполняется", i)
+        i = str(a) + str(b)
     finally:
-        print("Файнали, мы заканчиваем урок")
+        print (i)
+
+
 
 print(add_everything_up(123.456, 'строка'))
 print(add_everything_up('яблоко', 4215))
 print(add_everything_up(123.456, 7))
-print(add_everything_up('тыква', 'подсолнух'))
+
+
+
+#------------- дальше идет черновик------------
+# print(add_everything_up('тыква', 'подсолнух'))
+# decimal(
