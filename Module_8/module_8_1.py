@@ -19,8 +19,7 @@ print(add_everything_up(123.456, 7))
 яблоко4215
 130.456
 '''
-import decimal
-# getcontext().prec = 6
+
 def add_everything_up(a,b):
 
     try:
@@ -28,7 +27,7 @@ def add_everything_up(a,b):
     except TypeError as exc:
         i = str(a) + str(b)
     finally:
-        print (i)
+        return (i)
 
 
 
