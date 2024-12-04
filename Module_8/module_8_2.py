@@ -55,17 +55,18 @@ def personal_sum(*numbers):
 
 def calculate_average(*numbers):
     x = personal_sum(numbers)
-    for result, incorrect_data in x:
-        try:
-            print (result/(len(numbers)-incorrect_data))
-        except TypeError as exc:
-            print ('Ошибка типа')
-        except ZeroDivisionError as exc:
-            print ('Деление на ноль')
-        finally:
-            return result/(len(numbers)-incorrect_data)
-print (personal_sum("1, 2, 3"))
+    result = x[0]
+    incorrect_data = x[1]
+    try:
+        return (result/(len(numbers)-incorrect_data))
+    except TypeError as exc:
+        print ('Ошибка типа')
+    except ZeroDivisionError as exc:
+        print('Деление на ноль'
+    finally:
+        return (result/(len(numbers)-incorrect_data))
+#print (personal_sum("1, 2, 3"))
 print(f'Результат 1: {calculate_average("1, 2, 3")}') # Строка перебирается, но каждый символ - строковый тип
-# print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}') # Учитываются только 1 и 3
-# print(f'Результат 3: {calculate_average(567)}') # Передана не коллекция
-# print(f'Результат 4: {calculate_average([42, 15, 36, 13])}') # Всё должно работать
+print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}') # Учитываются только 1 и 3
+print(f'Результат 3: {calculate_average(567)}') # Передана не коллекция
+print(f'Результат 4: {calculate_average([42, 15, 36, 13])}') # Всё должно работать
