@@ -49,19 +49,19 @@ def personal_sum(numbers):
         except TypeError as exc:
             incorrect_data +=1
             print (f'Некоректный тип данных для подсчета суммы, {i}')
-    return (result, incorrect_data)
-
+    return result, incorrect_data
 
 def calculate_average(numbers):
-    result, incorrect_data = personal_sum(numbers)
     try:
-        return (result/(len(numbers)-incorrect_data) if (len(numbers)-incorrect_data)!=0 else 0)
-    except TypeError as exc:
-        #print ('В numbers записан некоректный тип данных')
-        return None
+        my_sum, incorrect_data = personal_sum(numbers)
+        return (my_sum/(len(numbers)-incorrect_data) if (len(numbers)-incorrect_data)!=0 else 0)
     except ZeroDivisionError as exc:
-        print(exc)
+        # print(exc)
         return 0
+    except TypeError as exc:
+        print ('В numbers записан некоректный тип данных')
+        return None
+
 
 print(f'Результат 1: {calculate_average('1, 2, 3')}') # Строка перебирается, но каждый символ - строковый тип
 print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}') # Учитываются только 1 и 3
