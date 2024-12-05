@@ -40,7 +40,7 @@ print(f'Результат 4: {calculate_average([42, 15, 36, 13])}') # Всё �
 Результат 4: 26.5
 '''
 
-def personal_sum(*numbers):
+def personal_sum(numbers):
     result = 0
     incorrect_data = 0
     for i in numbers:
@@ -48,23 +48,22 @@ def personal_sum(*numbers):
             result +=i
         except TypeError as exc:
             incorrect_data +=1
-            print ('Некоректный тип данных для подсчета суммы')
+            print (f'Некоректный тип данных для подсчета суммы, {i}')
     return (result, incorrect_data)
 
 
-def calculate_average(*numbers):
-    x = personal_sum(*numbers)
-    result = x[0]
-    incorrect_data = x[1]
+def calculate_average(numbers):
+    result, incorrect_data = personal_sum(numbers)
     try:
-        return (result/(len(numbers)-incorrect_data))
+        return (result/(len(numbers)-incorrect_data) if (len(numbers)-incorrect_data)!=0 else 0)
     except TypeError as exc:
-        print ('В numbers записан некоректный тип данных')
+        #print ('В numbers записан некоректный тип данных')
+        return None
     except ZeroDivisionError as exc:
         print(exc)
         return 0
 
-print(f'Результат 1: {calculate_average("1, 2, 3")}') # Строка перебирается, но каждый символ - строковый тип
+print(f'Результат 1: {calculate_average('1, 2, 3')}') # Строка перебирается, но каждый символ - строковый тип
 print(f'Результат 2: {calculate_average([1, "Строка", 3, "Ещё Строка"])}') # Учитываются только 1 и 3
 print(f'Результат 3: {calculate_average(567)}') # Передана не коллекция
 print(f'Результат 4: {calculate_average([42, 15, 36, 13])}') # Всё должно работать
