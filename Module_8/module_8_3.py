@@ -59,23 +59,6 @@ Model1 успешно создан
 Неверная длина номера
 
 '''
-class ProZero(Exception):
-    def __init__(self,message,extra_info):
-        self.message = message
-        self.extra_info = extra_info
-
-
-class Car:
-    def __init__(self,model,vin,numbers):
-        self.model = model
-        self.__vin = vin if __is_valid_vin(vin) else ''
-        self.numbers = numbers if __is_valid_numbers (vin) else ''
-
-    def __is_valid_vin(self):
-        return isinstance(self.__vin,int)
-    def __is_valid_numbers(self):
-        return isinstance(self.numbers,str)
-
 class IncorrectVinNumber:
     def __init__(self,message,extra_info):
         self.message = message
@@ -85,6 +68,37 @@ class IncorrectCarNumbers:
     def __init__(self,message,extra_info):
         self.message = message
         self.extra_info = extra_info
+
+class ProZero(Exception):
+    def __init__(self,message,extra_info):
+        self.message = message
+        self.extra_info = extra_info
+
+
+class Car:
+    def __init__(self,model,vin,numbers):
+        self.model = model
+        if __is_valid_vin:
+            self.__vin = vin
+            IncorrectVinNumber()
+        self.numbers = numbers
+
+    def __is_valid_vin(self):
+        if not isinstance(self.__vin,int):
+            raise IncorrectVinNumber ('Некорректный тип vin номер')
+        elif self.__vin>999999 or self.__vin<1000000:
+            raise IncorrectVinNumber  ('Неверный диапазон для vin номера')
+        else:
+            return True
+
+    def __is_valid_numbers(self):
+        if not isinstance(self.numbers,str):
+            raise IncorrectCarNumbers ('Некорректный тип данных для номеров')
+        elif len(self.numbers)
+            raise IncorrectCarNumbers ('Неверная длина номера')
+        return isinstance(self.numbers,str)
+
+
 # def f(a,b):
 #     if b ==0:
 #         raise ProZero('Деление на ноль невозможно',{'a':a,'b':b})
