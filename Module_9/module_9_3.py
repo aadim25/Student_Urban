@@ -19,8 +19,9 @@ print(list(second_result))
 Это небольшая практика, поэтому важность выполнения каждого условия обязательна.'''
 first = ['Strings', 'Student', 'Computers']
 second = ['Строка', 'Урбан', 'Компьютер']
+
 first_result = (len(x)-len(y) for x,y in zip(first, second) if len(x)!=len(y))
 print(list(first_result))
 
-second_result = (len(x)==len(y) for x in first for y in second for i in range(min(len(x),len(y))) if index(x)==i and index(y)==i)
+second_result = (len(first[x])==len(second[x]) for x in range(min(len(first), len(second))))
 print (list(second_result))
