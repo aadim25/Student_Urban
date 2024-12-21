@@ -35,8 +35,3 @@ print(add_everything_up(123.456, 'строка'))
 print(add_everything_up('яблоко', 4215))
 print(add_everything_up(123.456, 7))
 
-
-
-#------------- дальше идет черновик------------
-# print(add_everything_up('тыква', 'подсолнух'))
-# decimal(
