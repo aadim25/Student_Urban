@@ -52,14 +52,12 @@ result=list(map(lambda x,y: x==y , first, second))
 print(list(result))
 
 def get_advanced_writer(file_name):
-    my_file=open("file_name", 'a', encoding='utf-8')
-        def write_everything(data_set):
-            for data in data_set:
-                my_file.write(data)
-        return write_everything
+    my_file = open(file_name, 'a', encoding='utf-8')
+    def write_everything(*args):
+        for data in args:
+            my_file.writelines(str(data))
+    return write_everything
     my_file.close()
-
-
 
 class MysticBall:
     def __init__(self, *words):
