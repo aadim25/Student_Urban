@@ -43,9 +43,36 @@ print(first_ball())
 Примечания:
 Все задания пишутся в одном модуле.
 Передаваемые данные в функции и объекты можете использовать свои, главное, чтобы ваш код полноценно демонстрировал логику написанного.'''
+import random
 
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
 
 result=list(map(lambda x,y: x==y , first, second))
 print(list(result))
+
+def get_advanced_writer(file_name):
+    with open(file_name, 'a', encoding='utf-8') as my_file:
+        def write_everything(*data_set):
+            for data in data_set:
+                my_file.write(data)
+        return write_everything
+
+
+
+class MysticBall:
+    def __init__(self, *words):
+        self.words=[]
+        for word in words:
+            self.words.append(word)
+
+    def __call__(self):
+        return random.choice(self.words)
+
+write = get_advanced_writer('example.txt')
+write('Это строчка', ['А', 'это', 'уже', 'число', 5, 'в', 'списке'])
+
+first_ball = MysticBall('Да', 'Нет', 'Наверное')
+print(first_ball())
+print(first_ball())
+print(first_ball())
