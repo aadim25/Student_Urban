@@ -26,10 +26,10 @@ print(result)
 '''
 
 def is_prime(function):
-    def wrapper():
+    def wrapper(*args):
         count = 0
-        func = function()
-        for i in range(2,func):
+        func = function(*args)
+        for i in range(2,func+1):
             if func%i==0:
                 count+=1
             if count>=2:
@@ -47,3 +47,6 @@ def sum_three(*args):
 
 result = sum_three(2, 3, 6)
 print(result)
+
+'''Черновик
+'''
