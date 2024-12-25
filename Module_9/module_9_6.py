@@ -28,14 +28,18 @@ abc
 Успехов!'''
 
 def all_variants(text):
-    for i in range(len(text)):
-        for j in range(i+1,len(text)+1):
-            yield (text[i:j])
+    for k in range(len(text)):
+        for j in range(len(text)-k):
+            #
+            yield (text[j:j+k+1])
 
 gener = all_variants('abc')
-
-for i in gener:
-    print (i)
-
+for k in gener:
+    print (k)
 
 
+
+'''черновик
+ # print (f'i={i} j={j} (j+i+1)={j+i+1} text={text[-1:1]} len(text)={len(text)}')
+ print(f'i={i} j={j} (j+i+1)={j + i + 1} text={text[j:i+j+1]}')
+ '''
