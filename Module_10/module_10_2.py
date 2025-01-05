@@ -60,7 +60,6 @@ class Knight(threading.Thread):
         self.enemies = 100
 
     def run(self):
-        global enemies
         print(f'{self.name}, на нас напали!.')
         while self.enemies > 0:
             time.sleep(1)
