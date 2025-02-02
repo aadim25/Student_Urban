@@ -40,19 +40,46 @@ Ran 3 tests in 0.001s
 OK
 
 Примечания:
-Ваш код может отличаться от строгой последовательности описанной в задании. Главное - схожая логика работы тестов и наличие всех перечисленных переопределённых методов из класса TestCase.
+Ваш код может отличаться от строгой последовательности описанной в задании. Главное - схожая логика работы тестов и
+наличие всех перечисленных переопределённых методов из класса TestCase.
 Файл tests_12_2.py c классами тестов загрузите на ваш GitHub репозиторий. В решении пришлите ссылку на него.
 '''
+import runner_and_tournament, unittest
 
-from unittest import TestCase
-import runner_and_tournament
+class TournamentTest(unittest.TestCase):
+    pass
+class RunnerTest(unittest.TestCase):
+    def test_walk(self):
+        my_Runner_walk = runner_and_tournament.Runner(self)
+        for i in range(10):
+            my_Runner_walk.walk()
+        self.assertEqual(my_Runner_walk.distance, 50, "Не равно")
 
-class TournamentTest(TestCase):
+    def test_run(self):
+        my_Runner_run = runner_and_tournament.Runner(self)
+        for i in range(10):
+            my_Runner_run.run()
+        self.assertEqual(my_Runner_run.distance, 100, "Не равно")
+
+    def test_challenge(self):
+        chal_walk = runner_and_tournament.Runner(self)
+        chal_run = runner_and_tournament.Runner(self)
+        for i in range(10):
+            chal_walk.walk()
+            chal_run.run()
+        # print(chal_walk.distance,chal_run.distance)
+        self.assertNotEqual(chal_walk.distance, 10, "Не равно")
+        self.assertNotEqual(chal_run.distance, 50, "Не равно")
+
+
     def setUpClass(self):
-        pass
+        self.all_results = {}
 
     def setUp(self):
-        my_lst = [{'Усэйн':10},{'Ник':9},{'Андрей':3}]
+        self.my_lst = [{'Усэйн':10},{'Ник':9},{'Андрей':3}]
 
     def tearDownClass(self):
-        print(all_results)
+        print(self.all_results)
+
+if __name__ == "__main__":
+    unittest.main()
